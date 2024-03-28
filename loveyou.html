@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Love</title>
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+    
+    
+        :root{
+            --color-white: #fff;
+            --color-dark1: rgb(39, 39, 39);
+            --color-dark2: #2d2d2d;
+            --color-dark3: #414141;
+            --color-dark4: #1c1c1c;
+            --color-dark5: #343434;
+            --color-purple: white;
+        }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: var(--color-dark1);
+            color: var(--color-white);
+            font-family: "Poppins", sans-serif;
+            height: 1000px;
+            justify-content: center;
+            align-items: center;
+    }
+
+    .love-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin-top: -75%;
+    }
+
+.heart {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: red;
+      transform: rotate(-45deg);
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: 50px;
+    }
+    .centered-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--color-dark1);
+  color: white;
+  border: 3px solid red;
+  border-radius: 10%;
+  cursor: pointer;
+  width: 50%;
+  position: absolute;
+  margin-left: 25%;
+  margin-top: -70%;
+}
+.centered-button:hover {
+  background-color: red;
+  box-shadow: 8px 11px 1px black;
+}
+
+
+    #hiddenElement {
+  display: none;
+  margin-right: -100%;
+  animation: slideInFromRight 1s forwards; /* menerapkan animasi */
+}
+
+
+@keyframes slideInFromRight {
+  0% {
+    margin-right: -100%; /* mulai dari luar jendela browser */
+  }
+  100% {
+    margin-right: 0; /* akhir di sebelah kanan */
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+ <audio style="display:none" controls id="audioPlayer">
+    <source src = "itsyou.mp3" type="audio/mp3"/>
+  </audio>
+  
+  <div id="hiddenElement" class="centered-container">
+  <h1 style="text-align:center; ">My Love Only For You</h1>
+  
+
+  <p style="color:#008bff;text-align:center;margin-top:-5%;font-weight:bold">Met a lot of people but, nobody feels like you</p>
+  <div class="love-container">
+    <div class="heart"></div>
+  </div>
+  
+  <button id="show-button" class="centered-button">Read My Message</button>
+  <p id="hideText" style="padding:15px;position:absolute;margin-top:-75%;display: none;"><strong style="color:white;">Hai eL </strong>sebentar lagi lulus nih udah ga ketemu lagi. makasih ya udah jadi penyemangat disekolah bahkan hari hari gua. jangan kapok kenal sama bocah tengik kek gua ni aslinya baik banget dan multitasking kata mamah. terima kasih 2 tahunnya udah kasih semangat. 2 tahun masih sebentar cuy <a style="text-decoration:none;color:#2c5db9" href="https://www.bible.com/id/bible/306/GEN.29.20.TB">Nabi Yaqub 7 Tahun</a> baru dapat gimana gua cik. ngirim lewat website aja ya messagenya kalo ngomong langsung ga berani, takut diterkam. ga berharap banyak sih, gua juga udah tau endingnya hahaha. btw lu dijogja cakep bet cuy gua setiap pulang ke jogja gapernah liat orang secakep itu, selain cakep juga cool cuy. yaudah segini aja jangan panjang panjang nanti cape codingnya banyak kerjaan pula, takut ga dibaca juga, pasti lu udah tau ini dari siapa.  terima kasih orang baik......</p>
+  
+  <img id="imgHide"style="width:50%;margin-top:35%;opacity:0.2;margin-left: 25%;display: none;"src="admin.png">
+  
+  </div>
+
+</body>
+<script>
+    document.getElementById("show-button").addEventListener("click", function() {
+        setTimeout(function() {
+            var hideText = document.getElementById("hideText");
+            var hideBtn = document.getElementById('show-button');
+            var imgHide = document.getElementById('imgHide');
+            
+            hideText.style.display = "block";
+            hideBtn.style.display = "none";
+            imgHide.style.display = "block";
+        }, 2000);
+    });
+</script>
+<script>
+
+  // JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+  var hiddenElement = document.getElementById('hiddenElement');
+
+
+  window.addEventListener('touchstart', function() {
+   if (hiddenElement.style.display !== 'block') {
+      hiddenElement.style.display = 'block';
+      
+      
+    }
+  });
+});
+</script>
+<script>
+// Mendeteksi apakah pengguna berada di desktop atau laptop
+if (window.innerWidth > 768 && window.innerHeight > 576) {
+    // Jika lebar dan tinggi layar melebihi nilai tertentu, kosongkan halaman web
+    document.body.innerHTML = '';
+    alert("Harus Dibuka Pake Handphone Cik!")
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var audioPlayer = document.getElementById('audioPlayer');
+
+  // Check if the device has a touch screen
+  if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
+    // Start audio playback
+    audioPlayer.play().catch(function(error) {
+      console.error('Autoplay was prevented:', error);
+      // In case autoplay was prevented, we can try to play the audio in response to user interaction
+      document.addEventListener('click', function() {
+        audioPlayer.play().catch(function(error) {
+          console.error('Failed to play audio:', error);
+        });
+      });
+    });
+  }
+});
+</script>
+
+</html>
